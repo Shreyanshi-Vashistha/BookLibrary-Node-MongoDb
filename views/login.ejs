@@ -1,0 +1,23 @@
+<!-- Admin login page -->
+<%- include('shared/header.ejs') -%> <%- include('shared/nav.ejs') -%>
+<main>
+  <h1>Login</h1>
+  <p class="error">
+    <% if(typeof(error) != 'undefined'){ %> <%= error %> <% } %>
+  </p>
+  <form action="login-process" method="POST">
+    <div>
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" />
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" />
+    </div>
+    <div>
+      <input type="submit" value="Submit" class="btn" />
+    </div>
+  </form>
+</main>
+
+<%- include('shared/footer.ejs') -%>

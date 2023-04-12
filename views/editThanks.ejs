@@ -1,0 +1,113 @@
+<!-- Displays thank you after the record has been updated -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      :root {
+        --blue: #45048a;
+        --dark-blue: #03054d;
+        --black: #444;
+        --light-color: #666;
+        --border: 1px solid rgba(0, 0, 0, 0.1);
+        --border-hover: 1px solid var(--black);
+        --box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      }
+      .header1 {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-between;
+        background-color: beige;
+      }
+      .title {
+        margin-top: 30px;
+        margin-left: 10px;
+        font-size: 20px;
+        font-weight: bolder;
+        color: rgb(49, 6, 90);
+      }
+
+      .logo {
+        padding: 10px 0px 10px 10px;
+      }
+
+      .heading {
+        padding: 10px 5px 10px 450px;
+        font-size: 20px;
+        font-weight: bolder;
+        color: rgb(49, 6, 90);
+      }
+
+      nav {
+        background: #45048a;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      nav a {
+        font-size: 16px;
+        color: white;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      nav a:hover {
+        background: var(--dark-blue);
+      }
+      h1,
+      p {
+        text-align: center;
+        color: var(--blue);
+      }
+      h2 {
+        color: green;
+        text-align: center;
+      }
+      .credit {
+        border-top: var(--border);
+        margin-top: 20px;
+        padding: 0 10px;
+        padding-top: 15px;
+        font-size: 15px;
+        color: black;
+        text-align: center;
+        background-color: beige;
+        height: 30px;
+      }
+      .credit span {
+        color: var(--blue);
+      }
+    </style>
+    <title>Deleted Record</title>
+  </head>
+  <body>
+    <header>
+      <div class="header1">
+        <a href="/">
+          <img
+            src="/images/title.png"
+            class="logo"
+            height="50px"
+            width="50px"
+          />
+        </a>
+        <p class="title">Books4All</p>
+        <p class="heading">
+          <em> Online Book Library Store </em>
+        </p>
+      </div>
+    </header>
+    <%- include('admin/admin-nav.ejs') -%>
+    <main>
+      <section>
+        <h1>Thank you <%= name %></h1>
+        <h2>Your request has been successfully edited</h2>
+        <p>Check your email <%= email %> for confirmation</p>
+      </section>
+    </main>
+    <%- include('shared/footer.ejs') -%>
+  </body>
+</html>

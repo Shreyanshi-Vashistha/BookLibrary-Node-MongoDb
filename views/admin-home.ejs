@@ -1,0 +1,35 @@
+<!-- Displays all the records present in DB in the form of table -->
+<%- include('shared/header.ejs') -%> <%- include('admin/admin-nav.ejs') -%>
+
+<h3>Customer(s) Information</h3>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Contact Number</th>
+    <th>Department</th>
+    <th>Date of Issue</th>
+    <th>Query</th>
+    <th>Sms</th>
+    <th>Detail</th>
+    <th>Update</th>
+    <th>Remove</th>
+  </tr>
+  <!-- Use a forEach to display records -->
+  <% data.forEach(item => { %>
+  <tr>
+    <td><%= item.name %></td>
+    <td><%= item.email %></td>
+    <td><%= item.phone %></td>
+    <td><%= item.dept %></td>
+    <td><%= item.date %></td>
+    <td><%= item.query %></td>
+    <td><%= item.sms %></td>
+    <!-- Add a link to view a single records that will match the route in index.js -->
+    <td><a href="<%= `/details/${item.name}` %>">View</a></td>
+    <td><a href="<%= `/edit/${item.id}` %>">Edit</a></td>
+    <td><a href="<%= `/delete/${item.id}` %>">Delete</a></td>
+  </tr>
+  <% }); %>
+</table>
+<%- include('shared/footer.ejs') -%>

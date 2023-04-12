@@ -1,0 +1,172 @@
+:root {
+  --blue: #45048a;
+  --dark-blue: #03054d;
+  --black: #444;
+  --light-color: #666;
+  --border: 1px solid rgba(0, 0, 0, 0.1);
+  --border-hover: 1px solid var(--black);
+  --box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header1 {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  background-color: beige;
+}
+.title {
+  margin-top: 30px;
+  margin-left: 10px;
+  font-size: 20px;
+  font-weight: bolder;
+  color: rgb(49, 6, 90);
+}
+.logo {
+  padding: 10px 0px 10px 10px;
+}
+
+.heading {
+  padding: 10px 5px 10px 450px;
+  font-size: 20px;
+  font-weight: bolder;
+  color: rgb(49, 6, 90);
+}
+
+nav {
+  background: var(--blue);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav a {
+  font-size: 16px;
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+nav a:hover {
+  background: var(--dark-blue);
+}
+label {
+  font-size: 16px;
+}
+
+h1,
+h3,
+.descp {
+  text-align: center;
+  color: var(--blue);
+}
+h2 {
+  color: green;
+  text-align: center;
+}
+input[type="text"],
+textarea,
+input[type="checkbox"],
+input[type="radio"],
+input[type="date"],
+input[type="file"],
+input[type="email"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="submit"],
+input[type="reset"] {
+  margin-top: 10px;
+  display: inline-block;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 9px 30px;
+  border-radius: 5px;
+  background: var(--blue);
+  width: 100%;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+  background-color: var(--dark-blue);
+}
+
+form {
+  border-radius: 5px;
+  background-color: #9e7eee66;
+  padding: 30px;
+  width: 80%;
+  margin: auto;
+}
+
+.credit {
+  border-top: var(--border);
+  margin-top: 20px;
+  padding: 0 10px;
+  padding-top: 15px;
+  font-size: 15px;
+  color: var(--black);
+  text-align: center;
+  background-color: beige;
+  height: 30px;
+}
+.credit span {
+  color: var(--blue);
+}
+
+.error {
+  text-align: center;
+  color: red;
+  font-size: 17px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  font-size: 18px;
+}
+
+th:nth-child(even),
+td:nth-child(even) {
+  background-color: #9e7eee66;
+}
+tr:nth-child(even) {
+  background-color: #9e7eee66;
+}
+
+.detail {
+  width: 800px;
+  margin: auto;
+  border: var(--border-hover);
+  position: relative;
+}
+.info p {
+  text-align: center;
+  color: var(--blue);
+  font-size: 18px;
+  margin-left: 100px;
+}
+.info span {
+  color: var(--dark-blue);
+  font-size: 20px;
+  padding: 10px;
+}
+.detailImg {
+  position: absolute;
+}

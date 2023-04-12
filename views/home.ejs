@@ -1,0 +1,90 @@
+<!-- Displays a new request form -->
+<%- include('shared/header.ejs') -%>
+<%- include('shared/nav.ejs') -%>
+
+<h1><em>Want to issue a book? <br /><br />We're here to help!!!</em></h1>
+
+<h3>Let's go</h3>
+<% if(typeof errors !== 'undefined') {
+    for(let error of errors) {
+      %>
+        <p class="error"><%= error.msg %> <p/>
+      <%
+    }
+  } %>
+<form class="my-form" name="myForm" method="post" action="/book-form" enctype="multipart/form-data">
+	<fieldset>
+	  <legend>Contact Information</legend>
+	  <div class="field">
+		<label for="name">
+			Name:
+			<input type="text" name="name" placeholder="Enter your full name">
+		  </label>	  
+		</div>
+		<div class="field">
+			<label for="email">
+				Email:
+				<input type="email" name="email" placeholder="Enter your email address">
+			  </label>
+		</div>
+		<div class="field">
+			<label for="phone">
+				Phone:
+				<input type="text" name="phone" placeholder="Enter your phone number (xxx-xxx-xxxx)">
+			  </label>
+		</div>
+		<div class="field">
+			<label>Department:</label>
+			<select name="dept" id="dept">
+				<option value="">---Select Genre---</option>
+				<option value="Kids">Kids</option>
+				<option value="Fiction">Fiction</option>
+				<option value="Thriller">Thriller</option>
+				<option value="Horror">Horror</option>
+				<option value="Sci-Fi">Sci-Fi</option>
+			</select>
+		  </div>
+		  <div class="field">
+			<label for="photo">
+				Photo:
+				<input type="file" name="photo" id="photo" placeholder="Select image to upload"> 
+			  </label>
+		</div>
+		<div class="field">
+			<label for="date">Date of Issue:</label>
+			<input id="date" name="date" type="date" placeholder="Enter date of issue"/>
+	  </div>
+		<div class="field">
+			<label for="query">Query:</label>
+          <input type="text" id="query" name="query" />
+	  </div>
+	
+	 
+	</fieldset>
+
+	<fieldset>
+	  <legend>Want to receive notifications?</legend>
+	  <div class="notif">
+		<input id="yes" name="sms" type="radio" value="Yes" />
+		<label for="yes">Yes</label>
+	  </div>
+	  <div class="notif">
+		<input id="no" name="sms" type="radio" value="No" />
+		<label for="no">No</label>
+	  </div>
+	</fieldset>
+<fieldset>
+	<legend>Good to go?</legend>
+	<div class="submit">
+		<div class="field">
+	  <input type="reset" value="Reset" class="btn" /></div>
+	  <div class="field">
+	  <input type="submit" value="Submit" class="btn" />
+	</div>
+	</div>
+</fieldset>
+  </form>
+
+
+
+<%- include('shared/footer.ejs') -%>

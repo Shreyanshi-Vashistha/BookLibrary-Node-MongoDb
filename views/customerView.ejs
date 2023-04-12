@@ -1,0 +1,161 @@
+<!-- Displays all the data of the selected customer (View) -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      :root {
+        --blue: #45048a;
+        --dark-blue: #03054d;
+        --black: #444;
+        --light-color: #666;
+        --border: 1px solid rgba(0, 0, 0, 0.1);
+        --border-hover: 1px solid var(--black);
+        --box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      }
+      .header1 {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-between;
+        background-color: beige;
+      }
+
+      .logo {
+        padding: 10px 0px 10px 10px;
+      }
+
+      .heading {
+        padding: 10px 5px 10px 450px;
+        font-size: 20px;
+        font-weight: bolder;
+        color: rgb(49, 6, 90);
+      }
+      .title {
+        margin-top: 30px;
+        margin-left: 10px;
+        font-size: 20px;
+        font-weight: bolder;
+        color: rgb(49, 6, 90);
+      }
+
+      nav {
+        background: #45048a;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      nav a {
+        font-size: 16px;
+        color: white;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      nav a:hover {
+        background: var(--dark-blue);
+      }
+      h1 {
+        text-align: center;
+        color: var(--blue);
+      }
+      .credit {
+        border-top: var(--border);
+        margin-top: 20px;
+        padding: 0 10px;
+        padding-top: 15px;
+        font-size: 15px;
+        color: black;
+        text-align: center;
+        background-color: beige;
+        height: 30px;
+      }
+      .credit span {
+        color: var(--blue);
+      }
+      .detail {
+        width: 800px;
+        margin: auto;
+        border: var(--border-hover);
+        position: relative;
+      }
+      .info p {
+        text-align: center;
+        color: var(--blue);
+        font-size: 18px;
+        margin-left: 100px;
+      }
+      span {
+        color: var(--dark-blue);
+        font-size: 20px;
+        padding: 10px;
+      }
+      .detailImg {
+        position: absolute;
+      }
+      .btn {
+        /* margin-left: 100px; */
+        /* display: inline-block; */
+        color: #ffffff;
+        font-size: 16px;
+        cursor: pointer;
+        font-weight: 500;
+        padding: 9px 30px;
+        border-radius: 5px;
+        background: var(--blue);
+        width: 30%;
+      }
+    </style>
+
+    <title>Customer Information</title>
+  </head>
+  <body>
+    <%- include('shared/header.ejs') -%> <%- include('admin/admin-nav.ejs') -%>
+
+    <!-- Checking if contact is defined before rending -->
+    <% if (customer) { %>
+    <div style="display: flex; justify-content: center; padding: 10px">
+      <h1><%= customer.name %>'s Details</h1>
+      <div style="margin-left: 250px; margin-top: 30px">
+        <a class="btn" href="<%= `/edit/${customer.id}` %>">Edit</a>
+        <a class="btn" href="<%= `/delete/${customer.id}` %>">Delete</a>
+      </div>
+    </div>
+
+    <div class="detail">
+      <% if(customer.photoName ==="Empty"){ %>
+      <p>No photo to display</p>
+      <% } else { %>
+      <img
+        src="/uploads/<%= customer.photoName %>"
+        alt="Photo"
+        height="200px"
+        width="300px"
+        class="detailImg"
+      />
+
+      <% } %>
+
+      <!-- <p>id: <%= customer.id %></p> -->
+      <div class="info">
+        <p><span>Name:</span> <%= customer.name && customer.name %></p>
+        <p><span>Email: </span><%= customer.email %></p>
+        <p><span>Phone: </span><%= customer.phone %></p>
+        <p><span>Department: </span><%= customer.dept %></p>
+        <p><span>Date: </span><%= customer.date %></p>
+        <p><span>Query:</span> <%= customer.query %></p>
+        <p><span>Notifications:</span> <%= customer.sms %></p>
+      </div>
+
+      <% } else { %>
+      <p>Customer information not available.</p>
+
+      <% } %>
+    </div>
+
+    <%- include('shared/footer.ejs') -%>
+    <!-- </body>
+</html> -->
+  </body>
+</html>

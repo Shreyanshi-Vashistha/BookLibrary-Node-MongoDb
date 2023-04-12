@@ -1,0 +1,10 @@
+<!-- Displays thank you after the request form has been submitted -->
+<%- include('shared/header.ejs') -%> <%- include('shared/nav.ejs') -%>
+<main>
+  <section>
+    <h1>Thank you <%= name %></h1>
+    <h2>Your request has been successfully submitted</h2>
+    <p class="descp">Check your email <%= email %> for confirmation</p>
+  </section>
+</main>
+<%- include('shared/footer.ejs') -%>

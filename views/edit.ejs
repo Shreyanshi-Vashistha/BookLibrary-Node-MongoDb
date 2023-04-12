@@ -1,0 +1,265 @@
+<!-- Displays edit form for the selected customer -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --blue: #45048a;
+      --dark-blue: #03054d;
+      --black: #444;
+      --light-color: #666;
+      --border: 1px solid rgba(0, 0, 0, 0.1);
+      --border-hover: 1px solid var(--black);
+      --box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+    .header1 {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: space-between;
+      background-color: beige;
+    }
+    .title {
+  margin-top: 30px;
+  margin-left: 10px;
+  font-size: 20px;
+  font-weight: bolder;
+  color: rgb(49, 6, 90);
+}
+    .logo {
+      padding: 10px 0px 10px 10px;
+    }
+
+    .heading {
+      padding: 10px 5px 10px 450px;;
+      font-size: 20px;
+      font-weight: bolder;
+      color: rgb(49, 6, 90);
+    }
+
+    nav {
+      background: #45048a;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav a {
+      font-size: 16px;
+      color: white;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+    nav a:hover {
+      background: var(--dark-blue);
+    }
+    h1,
+    .descp {
+      text-align: center;
+      color: var(--blue);
+    }
+    .credit {
+      border-top: var(--border);
+      margin-top: 20px;
+      padding: 0 10px;
+      padding-top: 15px;
+      font-size: 15px;
+      color: black;
+      text-align: center;
+      background-color: beige;
+      height: 30px;
+    }
+    .credit span {
+      color: var(--blue);
+    }
+    input[type="text"],
+textarea,
+input[type="checkbox"],
+input[type="radio"],
+input[type="date"],
+input[type="file"],
+input[type="email"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="submit"],
+input[type="reset"] {
+  margin-top: 10px;
+  display: inline-block;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 9px 30px;
+  border-radius: 5px;
+  background: var(--blue);
+  width: 100%;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+  background-color: var(--dark-blue);
+}
+
+form {
+  border-radius: 5px;
+  background-color: #9e7eee66;
+  padding: 30px;
+  width: 80%;
+  margin: auto;
+}
+
+
+  </style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script src="/js/tinymce/jquery.tinymce.min.js"></script>
+
+<script src="/js/tinymce/tinymce.min.js"></script>
+
+<script>
+  tinymce.init({
+    selector: "#query",
+
+    height: 500,
+
+    menubar: false,
+  });
+</script>
+
+  <title>Update Record</title>
+</head>
+<body>
+  <header>
+    <header>
+      <div class="header1">
+        <a href="/">
+          <img
+            src="/images/title.png"
+            class="logo"
+            height="50px"
+            width="50px"
+          />
+        </a>
+        <p class="title">Books4All</p>
+        <p class="heading">
+          <em> Online Book Library Store </em>
+        </p>
+      </div>
+    </header>
+  </header>
+ <%- include('admin/admin-nav.ejs') -%>
+
+  <h1>Edit Contact Form</h1>
+
+  <form class="my-form" name="myForm" method="post" action="/edit/<%= customer.id %>" enctype="multipart/form-data">
+    <fieldset>
+      <legend>Contact Information</legend>
+      <div class="field">
+      <label for="name">
+        Name:
+        <input type="text" name="name" value="<%= customer.name %>">
+        </label>	  
+      </div>
+      <div class="field">
+        <label for="email">
+          Email:
+          <input type="email" name="email" value="<%= customer.email %>">
+          </label>
+      </div>
+      <div class="field">
+        <label for="phone">
+          Phone:
+          <input type="text" name="phone" value="<%= customer.phone %>">
+          </label>
+      </div>
+      <div class="field">
+        <label>Department:</label>
+        <select name="dept" id="dept">
+          <option value="" <%= !customer.dept ? 'selected' : '' %>Select</option>
+          <option value="Kids" <%= customer.dept === "Kids" ? 'selected' : '' %>>Kids</option>
+          <option value="Fiction" <%= customer.dept === "Fiction" ? 'selected' : '' %>>Fiction</option>
+          <option value="Thriller" <%= customer.dept === "Thriller" ? 'selected' : '' %>>Thriller</option>
+          <option value="Horror" <%= customer.dept === "Horror" ? 'selected' : '' %>>Horror</option>
+          <option value="Sci-Fi" <%= customer.dept === "Sci-Fi" ? 'selected' : '' %>>Sci-Fi</option>
+        </select>
+
+
+        </div>
+        <div class="field">
+        <label for="photo">
+        
+          Photo:
+          <% if(customer.photoName ==="Empty"){ %>
+            <p>Photo not selected earlier</p>
+            <% } else { %>
+            <img
+              src="/uploads/<%= customer.photoName %>"
+              alt="Photo"
+              height="200px"
+              width="300px"
+              class="detailImg"
+            />
+      
+            <% } %>
+          <input type="file" name="photo" id="photo" value="<%= customer.photoName %>"> 
+          </label>
+      </div>
+      <div class="field">
+        <label for="date">Date of Issue:</label>
+        <input id="date" name="date" type="date" value="<%= customer.date %>"/>
+      </div>
+      <div class="field">
+        <label for="query">Query:</label>
+            <input type="text" id="query" name="query" value="<%= customer.query %>"/>
+      </div>
+    
+     
+    </fieldset>
+  
+    <fieldset>
+      <legend>Want to receive notifications?</legend>
+      <div class="notif">
+      <input id="yes" name="sms" type="radio" value="Yes" <%= customer.sms === 'Yes' ? 'checked' : '' %>/>
+      <label for="yes">Yes</label>
+      </div>
+      <div class="notif">
+      <input id="no" name="sms" type="radio" value="No" <%= customer.sms === 'No' ? 'checked' : '' %>/>
+      <label for="no">No</label>
+      </div>
+    </fieldset>
+  <fieldset>
+    <legend>Good to go?</legend>
+    <div class="submit">
+      <div class="field">
+      <input type="reset" value="Reset" class="btn" /></div>
+      <div class="field">
+      <input type="submit" value="Submit" class="btn" />
+    </div>
+    </div>
+    </fieldset>
+    </form>
+
+  <% if(typeof errors !== 'undefined') {
+    for(let error of errors) {
+      %>
+        <p><%= error.msg %> <p/>
+      <%
+    }
+  } %>
+
+ 
+
+<%- include('shared/footer.ejs') -%>
