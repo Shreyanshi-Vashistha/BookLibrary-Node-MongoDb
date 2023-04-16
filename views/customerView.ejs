@@ -95,8 +95,6 @@
         position: absolute;
       }
       .btn {
-        /* margin-left: 100px; */
-        /* display: inline-block; */
         color: #ffffff;
         font-size: 16px;
         cursor: pointer;
@@ -111,7 +109,26 @@
     <title>Customer Information</title>
   </head>
   <body>
-    <%- include('shared/header.ejs') -%> <%- include('admin/admin-nav.ejs') -%>
+    <header>
+      <header>
+        <div class="header1">
+          <a href="/">
+            <img
+              src="/images/title.png"
+              class="logo"
+              height="50px"
+              width="50px"
+            />
+          </a>
+          <p class="title">Books4All</p>
+          <p class="heading">
+            <em> Online Book Library Store </em>
+          </p>
+        </div>
+      </header>
+    </header>
+
+    <%- include('admin/admin-nav.ejs') -%>
 
     <!-- Checking if contact is defined before rending -->
     <% if (customer) { %>
@@ -136,8 +153,6 @@
       />
 
       <% } %>
-
-      <!-- <p>id: <%= customer.id %></p> -->
       <div class="info">
         <p><span>Name:</span> <%= customer.name && customer.name %></p>
         <p><span>Email: </span><%= customer.email %></p>
@@ -155,7 +170,4 @@
     </div>
 
     <%- include('shared/footer.ejs') -%>
-    <!-- </body>
-</html> -->
-  </body>
-</html>
+  

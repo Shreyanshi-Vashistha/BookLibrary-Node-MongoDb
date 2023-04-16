@@ -118,9 +118,9 @@ myApp.get("/admin-home", async (req, res) => {
 });
 
 // View endpoint - using name from url to find the record to and display all data of that record to customer.ejs
-myApp.get("/details/:name", async (req, res) => {
+myApp.get("/details/:id", async (req, res) => {
   const singleCustomer = await Customer.findOne({
-    name: { $regex: req.params.name, $options: "i" },
+    _id: req.params.id,
   }).exec();
   res.render("customerView", { customer: singleCustomer });
 });
@@ -267,3 +267,4 @@ myApp.post("/edit/:id", async (req, res) => {
 });
 
 myApp.listen(8086);
+console.log("application is running on http://localhost:8086/");
